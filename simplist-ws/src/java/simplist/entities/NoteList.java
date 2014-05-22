@@ -3,26 +3,28 @@ package simplist.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author adelplace
  */
 @Entity
-@Table(name="LIST_NOTE")
-public class ListNote extends AbstractEntity implements Serializable {
+@Table(name="NOTE_LIST")
+@XmlRootElement
+public class NoteList extends AbstractEntity implements Serializable {
     
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private int id;
     
-    @Column(name="libelle")
+    @Column(name="libelle", unique = true)
     private String libelle;
     
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
     
-    @OneToMany(mappedBy = "listNote")
+    @OneToMany(mappedBy = "noteList")
     private List<Note> notes;
 
     public int getId() {
@@ -51,7 +53,7 @@ public class ListNote extends AbstractEntity implements Serializable {
 
     @Override
     public String toJSON() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "{ libelle : " + libelle + ", user_id : " + user.getId() + "}";
     }
     
     

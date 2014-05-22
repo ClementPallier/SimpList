@@ -1,13 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import simplist.entities.Image;
-import simplist.entities.Line;
-import simplist.entities.ListNote;
-import simplist.entities.Note;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,11 +5,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ejb.EJB;
 
 
-import simplist.entities.User;
-import javax.json.JsonReader;
 
 /**
  *
@@ -51,7 +38,7 @@ public class test extends HttpServlet {
 //        userDAO.create(u);
 //        
 //        // listeNote
-//        ListNote ln = new ListNote();
+//        NoteList ln = new NoteList();
 //        
 //        ln.setLibelle("Permière liste");
 //        ln.setUser(u);

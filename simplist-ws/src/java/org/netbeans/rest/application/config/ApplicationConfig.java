@@ -30,7 +30,10 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(simplist.resources.UserRS.class);
+        resources.add(service.LineFacadeREST.class);
+        resources.add(service.NoteFacadeREST.class);
+        resources.add(service.NoteListFacadeREST.class);
+        resources.add(service.UserFacadeREST.class);
     }
     
 }

@@ -2,6 +2,7 @@ package simplist.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -11,6 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="USER")
+@XmlRootElement
 public class User extends AbstractEntity implements Serializable {
 
     @Id
@@ -24,7 +26,7 @@ public class User extends AbstractEntity implements Serializable {
     private String password;
     
     @OneToMany(mappedBy = "user")
-    private List<ListNote> listNotes;
+    private List<NoteList> noteLists;
     
     @Column(name="EMAIL", unique = true)
     private String email;

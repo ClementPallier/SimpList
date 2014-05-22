@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package simplist.dao;
+package service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -13,12 +13,10 @@ import javax.persistence.EntityManager;
  *
  * @author adelplace
  */
-public abstract class AbstractDAO<T> {
+public abstract class AbstractFacade<T> {
     private Class<T> entityClass;
-    protected static String JPQL_SELECT_BY_IDPARENT;
-    protected static String PARAM_IDPARENT;
 
-    public AbstractDAO(Class<T> entityClass) {
+    public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
@@ -39,15 +37,11 @@ public abstract class AbstractDAO<T> {
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
-    
+
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
-    }
-    
-    public List<T> findByParent(int parentId) {
-        return getEntityManager().createQuery(JPQL_SELECT_BY_IDPARENT).setParameter(PARAM_IDPARENT, parentId).getResultList();
     }
 
     public List<T> findRange(int[] range) {

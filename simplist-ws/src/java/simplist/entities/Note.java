@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -12,6 +13,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="NOTE")
+@XmlRootElement
 public class Note extends AbstractEntity implements Serializable {
     
     @Id
@@ -30,13 +32,11 @@ public class Note extends AbstractEntity implements Serializable {
     private Date createdAt;
     
     @ManyToOne
-    ListNote listNote;
+    NoteList noteList;
     
     @OneToMany(mappedBy = "note")
     private List<Line> lines;
     
-    @OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
-    private Image image;
 
     public int getId() {
         return id;
@@ -70,20 +70,12 @@ public class Note extends AbstractEntity implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public ListNote getListNote() {
-        return listNote;
+    public NoteList getNoteList() {
+        return noteList;
     }
 
-    public void setListNote(ListNote listNote) {
-        this.listNote = listNote;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
+    public void setNoteList(NoteList noteList) {
+        this.noteList = noteList;
     }
 
     @Override

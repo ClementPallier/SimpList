@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package simplist.dao;
 
 import javax.ejb.Stateless;
@@ -27,6 +21,9 @@ public class LineDAO extends AbstractDAO<Line> {
 
     public LineDAO() {
         super(Line.class);
+        JPQL_SELECT_BY_IDPARENT = "SELECT l FROM Line WHERE NOTE_ID=:note_id";
+        PARAM_IDPARENT = "note_id";
     }
+    
     
 }

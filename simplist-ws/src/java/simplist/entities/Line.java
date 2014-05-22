@@ -1,6 +1,7 @@
 package simplist.entities;
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -9,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="LINE")
+@XmlRootElement
 public class Line extends AbstractEntity implements Serializable {
     
     @Id
